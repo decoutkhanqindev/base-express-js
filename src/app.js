@@ -1,11 +1,22 @@
 const express = require("express")
-const { nextTick } = require("process")
+const path = require("path")
 require("dotenv").config()
 
 const app = express()
 const env = process.env
 const port = env.PORT || 8080 
 const hostname = env.HOSTNAME
+
+// ---------------------------------------------------------
+
+app.set("view engine", "ejs")
+app.set("views", path.join(__dirname, "views"))
+
+app.get("/viewengine", (req, res) => {
+  res.render("index.ejs")
+})
+
+// ---------------------------------------------------------
 
 // app.method(path, handler)
 app.get("/", function (req, res) { 
@@ -59,8 +70,6 @@ app.use('/test', (req, res) =>{
 });
 
 // ---------------------------------------------------------
-
-
 
 app.listen(port, hostname, () => {
    console.log(`Server running at http://localhost:${port}/`);
