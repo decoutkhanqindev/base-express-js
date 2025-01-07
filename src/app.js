@@ -9,6 +9,7 @@ const hostname = env.HOSTNAME
 
 // ---------------------------------------------------------
 
+// config view engine with ejs
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "views"))
 
@@ -16,6 +17,11 @@ app.get("/viewengine", (req, res) => {
   res.render("index.ejs")
 })
 
+// ---------------------------------------------------------
+
+// config static files
+app.use(express.static(path.join(__dirname, "public")))
+ 
 // ---------------------------------------------------------
 
 // app.method(path, handler)
@@ -40,31 +46,31 @@ app.get("/showIdAndName/:id/:name", (req, res) => {
 
 // ---------------------------------------------------------
 
-//Middleware function to log request protocol
+// middleware function to log request protocol
 app.use('/things', function(req, res, next){
    console.log("A request for things received at " + Date.now());
    next();
 });
 
-// Route handler that sends the response
+// route handler that sends the response
 app.get('/things', function(req, res){
    res.send('Things');
 });
 
 // ---------------------------------------------------------
 
-// First middleware before response is sent
+// first middleware before response is sent
 app.use("/test", (req, res, next) => {
   console.log("Start")
   next()
 })
-// Route handler
+// route handler
 app.get("/test", (req, res, next) => {
   res.send("Test")
   next()
 })
 
-// Last middleware after reponse is sent
+// last middleware after reponse is sent
 app.use('/test', (req, res) =>{
    console.log('End');
 });
