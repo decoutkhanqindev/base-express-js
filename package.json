@@ -1,0 +1,29 @@
+{
+  "name": "base_express_js",
+  "version": "1.0.0",
+  "description": "base express js",
+  "main": "helloworld.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decoutkhanqindev/base-express-js.git"
+  },
+  "keywords": [
+    "base",
+    "express",
+    "js"
+  ],
+  "author": "decoutkhanqindev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/decoutkhanqindev/base-express-js/issues"
+  },
+  "homepage": "https://github.com/decoutkhanqindev/base-express-js#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
